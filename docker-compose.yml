@@ -1,0 +1,22 @@
+version: "3"
+services:
+       login-app:
+           container_name: login-app
+
+           restart: always
+           build: .
+           ports:
+             - "8089:3224"
+           volumes:
+              - E:\React Projects\Node.js-Register-Login-App:/app
+                            
+           links:
+             - mongo
+       mongo:
+             container_name: mongo
+             image: mongo
+             ports:
+               - '27017:27017'
+networks:
+    mongo:
+      driver: bridges
